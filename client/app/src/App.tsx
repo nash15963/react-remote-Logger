@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// logger
+import { Logger, testLogger } from './Logger'
+
 function App() {
+
+  // const message ='hello world' ;
+
+  useEffect(()=>{
+    testLogger()
+  },[])
+
+
+  useEffect(()=>{
+    const message = 'hello world'
+    const localFile = 'app.tsx'
+    Logger(1, message, localFile);
+  },[])
+
+  
   return (
     <div className="App">
       <header className="App-header">
