@@ -2,6 +2,13 @@ import {useEffect, useState} from "react";
 import {Service} from "./Service";
 import {Dictionary} from "./Dictionary";
 
+interface LogInterfaces {
+    timestamp: string
+    level : number
+    log : string
+    from :string
+}
+
 export function testLogger(){
     fetch("http://127.0.0.1:5000/api/test")
     .then(function(response) {
@@ -36,6 +43,17 @@ export function Logger(level:number,log: string,from:string) {
     });
 }
 
+// export function asyncLogger(level:number,log: string,from:string){
+//     const loggerlist = 
+//     const logger = {
+//         level : level,
+//         log : log,
+//         from : from
+//     }
+//     setLoggerList(...loggerList,logger)
+
+// }
+//global state
 
 export function useLogService()  {
     const [result, setResult] = useState<Service<Dictionary<string>[]>>({
@@ -51,5 +69,3 @@ export function useLogService()  {
 
     return result;
 }
-
-export default { Logger, useLogService, testLogger };
